@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"bsf.digital.bsffinance", "bsf.digital.bsffinance.controller" , "org.openapitools.configuration"})
+@ComponentScan(basePackages = {"bsf.digital.bsffinance", "bsf.digital.bsffinance.bsf.digital.bsffinance.controller" , "org.openapitools.configuration"})
 public class OpenAPI2SpringBoot implements CommandLineRunner {
 
     @Override

@@ -22,6 +22,9 @@ public class AccountController {
     public ResponseEntity<Account> getUser(@PathVariable String accountnumber) {
         try {
             Account account = accountService.getAccountByAccountNumber(accountnumber);
+            if (account==null)
+                throw new ResponseStatusException(
+                        HttpStatus.NOT_FOUND);
             return ResponseEntity.status(200).body(account);
         } catch (AccountNotExist exception) {
             throw new ResponseStatusException(

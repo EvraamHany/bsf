@@ -131,8 +131,8 @@
 <!--							<output>${project.basedir}</output>-->
 <!--							<configOptions>-->
 <!--								<modelPackage>${base.package}.model</modelPackage>-->
-<!--								<apiPackage>${base.package}.controller</apiPackage>-->
-<!--								<invokerPackage>${base.package}.controller</invokerPackage>-->
+<!--								<apiPackage>${base.package}.bsf.digital.bsffinance.controller</apiPackage>-->
+<!--								<invokerPackage>${base.package}.bsf.digital.bsffinance.controller</invokerPackage>-->
 <!--								<sourceFolder>src/main/generated</sourceFolder>-->
 <!--								<serializableModel>true</serializableModel>-->
 <!--								<dateLibrary>java8</dateLibrary>-->

@@ -39,7 +39,7 @@ public class OpenAPIDocumentationConfig {
     public Docket customImplementation(ServletContext servletContext, @Value("${openapi.bSFFinance.base-path:/api}") String basePath) {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                    .apis(RequestHandlerSelectors.basePackage("bsf.digital.bsffinance.controller"))
+                    .apis(RequestHandlerSelectors.basePackage("bsf.digital.bsffinance.bsf.digital.bsffinance.controller"))
                     .build()
                 .pathProvider(new BasePathAwareRelativePathProvider(servletContext, basePath))
                 .directModelSubstitute(java.time.LocalDate.class, java.sql.Date.class)

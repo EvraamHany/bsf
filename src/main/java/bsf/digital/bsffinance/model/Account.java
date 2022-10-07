@@ -19,6 +19,8 @@ public class Account implements Serializable {
     @Column(name = "balance")
     BigDecimal balance;
 
+
+
     public String getAccountNumber() {
         return accountNumber;
     }
@@ -49,5 +51,15 @@ public class Account implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "id=" + id +
+                ", accountNumber='" + accountNumber + '\'' +
+                ", name='" + name + '\'' +
+                ", balance=" + balance +
+                '}';
     }
 }

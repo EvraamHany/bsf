@@ -34,12 +34,9 @@ public class TransferService {
     }
 
 
-    private void hasValidBalance(Account creditAccount, BigDecimal transferAmount) throws NotValidTransaction {
+    public void hasValidBalance(Account creditAccount, BigDecimal transferAmount) throws NotValidTransaction {
         if (creditAccount.getBalance().compareTo(transferAmount) < 0) {
             throw new NotValidTransaction("credit account don't has the required amount");
         }
-
     }
-
-
 }
