@@ -4,9 +4,7 @@ import bsf.digital.bsffinance.TestUtils;
 import bsf.digital.bsffinance.exceptions.AccountNotExist;
 import bsf.digital.bsffinance.model.Account;
 import bsf.digital.bsffinance.repository.AccountRepo;
-import bsf.digital.bsffinance.service.AccountService;
 import org.junit.Test;
-import org.junit.function.ThrowingRunnable;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -16,7 +14,6 @@ import org.mockito.junit.MockitoJUnitRunner;
 import java.math.BigDecimal;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThrows;
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)

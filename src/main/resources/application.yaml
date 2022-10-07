@@ -32,6 +32,4 @@ spring:
 
     defer-datasource-initialization: true
 
-springdoc.swagger-ui.disable-swagger-default-url: true
-springdoc.swagger-ui.path: ${OPENAPI_BASEPATH:/api/digital/social-media-hub-connector}/swagger-ui.html}
 

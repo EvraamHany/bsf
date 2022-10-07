@@ -1,19 +1,14 @@
 package bsf.digital.bsffinance.service;
 
 import bsf.digital.bsffinance.TestUtils;
-import bsf.digital.bsffinance.exceptions.AccountNotExist;
 import bsf.digital.bsffinance.exceptions.NotValidTransaction;
-import bsf.digital.bsffinance.repository.TransferRepo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.math.BigDecimal;
 
-import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TransferServiceTest {
