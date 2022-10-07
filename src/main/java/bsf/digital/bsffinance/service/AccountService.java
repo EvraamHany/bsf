@@ -21,15 +21,17 @@ public class AccountService {
         return account;
     }
 
-    public void updateDebitAccount(Transfer transfer, Account debitAccount) {
+    public BigDecimal updateDebitAccount(Transfer transfer, Account debitAccount) {
         BigDecimal amountToIncrease = (debitAccount.getBalance()).add(transfer.getAmount());
         debitAccount.setBalance(amountToIncrease);
         accountRepo.save(debitAccount);
+        return amountToIncrease;
     }
-    public void updateCreditAccount(Transfer transfer, Account creditAccount) {
+    public BigDecimal updateCreditAccount(Transfer transfer, Account creditAccount) {
         BigDecimal amountToDeduct = (creditAccount.getBalance()).subtract(transfer.getAmount());
         creditAccount.setBalance(amountToDeduct);
         accountRepo.save(creditAccount);
+        return amountToDeduct;
     }
     public Account checkIfAccountExist(String accountNumber) throws AccountNotExist {
         Account account = accountRepo.findAccountByAccountNumber(accountNumber);
