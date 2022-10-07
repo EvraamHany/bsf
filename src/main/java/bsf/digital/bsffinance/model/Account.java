@@ -15,7 +15,7 @@ public class Account implements Serializable {
     @Column(name = "name")
     String name;
     @Column(name = "balance")
-    Long balance;
+    Float balance;
 
     public String getAccountNumber() {
         return accountNumber;
@@ -33,11 +33,11 @@ public class Account implements Serializable {
         this.name = name;
     }
 
-    public Long getBalance() {
+    public Float getBalance() {
         return balance;
     }
 
-    public void setBalance(Long balance) {
+    public void setBalance(Float balance) {
         this.balance = balance;
     }
 }

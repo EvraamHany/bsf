@@ -15,7 +15,7 @@ public class Transfer implements Serializable {
     @Column(name = "creditaccount")
     String creditAccount;
     @Column(name = "amount")
-    Long amount;
+    Float amount;
 
     public Long getTransferNumber() {
         return transferNumber;
@@ -41,11 +41,11 @@ public class Transfer implements Serializable {
         this.creditAccount = creditAccount;
     }
 
-    public Long getAmount() {
+    public Float getAmount() {
         return amount;
     }
 
-    public void setAmount(Long amount) {
+    public void setAmount(Float amount) {
         this.amount = amount;
     }
 }

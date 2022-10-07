@@ -33,17 +33,17 @@ public class TransferService {
     }
 
     private void updateCreditAccount(Transfer transfer, Account creditAccount) {
-        Long amountToDeduct = creditAccount.getBalance() - transfer.getAmount();
+        Float amountToDeduct = creditAccount.getBalance() - transfer.getAmount();
         creditAccount.setBalance(amountToDeduct);
         accountRepo.save(creditAccount);
     }
 
     private void updateDebitAccount(Transfer transfer, Account debitAccount) {
-        Long amountToIncrease = debitAccount.getBalance() + transfer.getAmount();
+        Float amountToIncrease = debitAccount.getBalance() + transfer.getAmount();
         debitAccount.setBalance(amountToIncrease);
         accountRepo.save(debitAccount);
     }
-    private void hasValidBalance(Account creditAccount, Long transferAmount) throws NotValidTransaction {
+    private void hasValidBalance(Account creditAccount, Float transferAmount) throws NotValidTransaction {
         if (transferAmount > creditAccount.getBalance()) {
             throw new NotValidTransaction("credit account don't has the required amount");
         }
