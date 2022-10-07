@@ -1,27 +1,41 @@
 # BSF Service
-it is all about bank accounts with details and how to manage money transfer between accounts
+A service to handle bank accounts and bank transaction between accounts
+
+## the used technologies 
+    java 11
+    spring-boot
+    Open-API
+    docker
+    H2 database
 
 
 # Run the application
     mvn clean install
     mvn spring-boot:run
     
-# OpenAPI file Directory
-
+    
+# OpenAPI 
+### use this url to get the swagger UI after running the application on local machine
+        http://localhost:8080/swagger-ui.html
+### you can find the swagger file here
     https://github.com/EvraamHany/bsf/blob/main/src/main/resources/static/bsf.yaml
     
     
-# DockerFile directory 
-
-    https://github.com/EvraamHany/bsf/blob/main/Dockerfile
-    
+# DockerFile 
  ### Run Docker file
     mvn clean backage
-    then run dokerFile
+    docker build -f "Dockerfile" .
+    docker images   #(to show the created image ID)
+    docker run <ImageID>
+### you can find the docker file here
+    https://github.com/EvraamHany/bsf/blob/main/Dockerfile
+    
+
+    
     
 
 # API Requests
-all endpoints examples as below
+end point to get account and another to make transfer
 ## get account details
 ### Request
     'GET /account/{accountNumber}'
