@@ -19,7 +19,7 @@ public class AccountController {
     AccountService accountService;
 
     @GetMapping("/account/{accountnumber}")
-    public ResponseEntity<Account> getUser(@PathVariable String accountnumber) {
+    public ResponseEntity<Account> getAccount(@PathVariable String accountnumber) {
         try {
             Account account = accountService.getAccountByAccountNumber(accountnumber);
             if (account==null)
