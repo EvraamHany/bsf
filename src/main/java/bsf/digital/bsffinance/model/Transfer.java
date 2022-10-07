@@ -2,6 +2,7 @@ package bsf.digital.bsffinance.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "transfer")
@@ -15,7 +16,7 @@ public class Transfer implements Serializable {
     @Column(name = "creditaccount")
     String creditAccount;
     @Column(name = "amount")
-    Float amount;
+    BigDecimal amount;
 
     public Long getTransferNumber() {
         return transferNumber;
@@ -41,11 +42,11 @@ public class Transfer implements Serializable {
         this.creditAccount = creditAccount;
     }
 
-    public Float getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
-    public void setAmount(Float amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 }

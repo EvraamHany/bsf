@@ -5,56 +5,41 @@ import bsf.digital.bsffinance.exceptions.NotValidTransaction;
 import bsf.digital.bsffinance.model.Account;
 import bsf.digital.bsffinance.model.Transfer;
 import bsf.digital.bsffinance.model.TransferResponseEntity;
-import bsf.digital.bsffinance.repository.AccountRepo;
 import bsf.digital.bsffinance.repository.TransferRepo;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
+
 @Service
 public class TransferService {
-    private final AccountRepo accountRepo;
     private final TransferRepo transferRepo;
+    private final AccountService accountService;
 
-    public TransferService(AccountRepo accountRepo, TransferRepo transferRepo) {
-        this.accountRepo = accountRepo;
+    public TransferService(TransferRepo transferRepo, AccountService accountService) {
         this.transferRepo = transferRepo;
+        this.accountService = accountService;
     }
 
     @Transactional
     public TransferResponseEntity applyTransfer(Transfer transfer) throws AccountNotExist, NotValidTransaction {
 
-            Account creditAccount = checkIfAccountExist(transfer.getCreditAccount());
-            Account debitAccount = checkIfAccountExist(transfer.getDebitAccount());
-            hasValidBalance(creditAccount, transfer.getAmount());
-            updateDebitAccount(transfer, debitAccount);
-            updateCreditAccount(transfer, creditAccount);
-            transferRepo.save(transfer);
-            return new TransferResponseEntity().creditAccount(creditAccount).debitAccount(debitAccount).amount(transfer.getAmount());
+        Account creditAccount = accountService.checkIfAccountExist(transfer.getCreditAccount());
+        Account debitAccount = accountService.checkIfAccountExist(transfer.getDebitAccount());
+        hasValidBalance(creditAccount, transfer.getAmount());
+        accountService.updateDebitAccount(transfer, debitAccount);
+        accountService.updateCreditAccount(transfer, creditAccount);
+        transferRepo.save(transfer);
+        return new TransferResponseEntity().creditAccount(creditAccount).debitAccount(debitAccount).amount(transfer.getAmount());
     }
 
-    private void updateCreditAccount(Transfer transfer, Account creditAccount) {
-        Float amountToDeduct = creditAccount.getBalance() - transfer.getAmount();
-        creditAccount.setBalance(amountToDeduct);
-        accountRepo.save(creditAccount);
-    }
 
-    private void updateDebitAccount(Transfer transfer, Account debitAccount) {
-        Float amountToIncrease = debitAccount.getBalance() + transfer.getAmount();
-        debitAccount.setBalance(amountToIncrease);
-        accountRepo.save(debitAccount);
-    }
-    private void hasValidBalance(Account creditAccount, Float transferAmount) throws NotValidTransaction {
-        if (transferAmount > creditAccount.getBalance()) {
+    private void hasValidBalance(Account creditAccount, BigDecimal transferAmount) throws NotValidTransaction {
+        if (creditAccount.getBalance().compareTo(transferAmount) < 0) {
             throw new NotValidTransaction("credit account don't has the required amount");
         }
 
     }
 
-    private Account checkIfAccountExist(String accountNumber) throws AccountNotExist {
-        Account account = accountRepo.findAccountByAccountNumber(accountNumber);
-        if (account == null) {
-            throw new AccountNotExist(String.format("%S %S %S", "Account",accountNumber,"is not Exist"));
-        }
-        else return account;
-    }
+
 }

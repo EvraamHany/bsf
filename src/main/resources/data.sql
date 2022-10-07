@@ -1,10 +1,11 @@
 DROP TABLE IF EXISTS account;
 create table account
 (
-    account_number varchar(255) not null
+    id bigint not null
         constraint account_pkey
             primary key,
-    balance        bigint,
+    account_number varchar(255) not null,
+    balance        VARCHAR,
     name           varchar(255)
 );
 
@@ -15,9 +16,9 @@ create table transfer
     transfer_number bigint not null
         constraint transfer_pkey
             primary key,
-    amount          bigint,
+    amount          VARCHAR,
     creditaccount   varchar(255),
     debitaccount    varchar(255)
 );
-INSERT INTO account (account_number, balance, name) VALUES ('1234', 200, 'evram');
-INSERT INTO account (account_number, balance, name) VALUES ('345', 200, 'hany');
+INSERT INTO account (id, account_number, balance, name) VALUES (1,'1234', 200.25, 'evram');
+INSERT INTO account (id, account_number, balance, name) VALUES (2,'345', 200.34, 'hany');

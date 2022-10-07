@@ -2,6 +2,8 @@ package bsf.digital.bsffinance.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.math.BigDecimal;
+
 
 public class TransferResponseEntity {
     @JsonProperty("creditAccount")
@@ -9,7 +11,7 @@ public class TransferResponseEntity {
     @JsonProperty("debitAccount")
     private Account debitAccount;
     @JsonProperty("amount")
-    private Float amount;
+    private BigDecimal amount;
 
     public Account getCreditAccount() {
         return creditAccount;
@@ -27,11 +29,11 @@ public class TransferResponseEntity {
         this.debitAccount = debitAccount;
     }
 
-    public Float getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
-    public void setAmount(Float amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 
@@ -43,7 +45,7 @@ public class TransferResponseEntity {
         this.creditAccount=creditAccount;
         return this;
     }
-    public TransferResponseEntity amount(Float amount){
+    public TransferResponseEntity amount(BigDecimal amount){
         this.amount =amount;
         return this;
     }
