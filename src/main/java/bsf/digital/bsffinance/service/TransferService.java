@@ -6,7 +6,9 @@ import bsf.digital.bsffinance.model.Account;
 import bsf.digital.bsffinance.model.Transfer;
 import bsf.digital.bsffinance.model.TransferResponseEntity;
 import bsf.digital.bsffinance.repository.TransferRepo;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
@@ -21,9 +23,9 @@ public class TransferService {
         this.accountService = accountService;
     }
 
-    @Transactional
+    @Transactional(isolation= Isolation.SERIALIZABLE)
+//    @Async
     public TransferResponseEntity applyTransfer(Transfer transfer) throws AccountNotExist, NotValidTransaction {
-
         Account creditAccount = accountService.checkIfAccountExist(transfer.getCreditAccount());
         Account debitAccount = accountService.checkIfAccountExist(transfer.getDebitAccount());
         hasValidBalance(creditAccount, transfer.getAmount());

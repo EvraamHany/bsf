@@ -20,5 +20,5 @@ create table transfer
     creditaccount   varchar(255),
     debitaccount    varchar(255)
 );
-INSERT INTO account (id, account_number, balance, name) VALUES (1,'1234', 200.25, 'evram');
-INSERT INTO account (id, account_number, balance, name) VALUES (2,'345', 200.34, 'hany');
+INSERT INTO account (id, account_number, balance, name) VALUES (1,'1234', 200, 'evram');
+INSERT INTO account (id, account_number, balance, name) VALUES (2,'345', 200, 'hany');
