@@ -119,7 +119,7 @@
 <!--				<version>${openapi-generator-maven-plugin.version}</version>-->
 <!--				<executions>-->
 <!--					<execution>-->
-<!--						<id>msg-sunshine-connector</id>-->
+<!--						<id>bsffinance</id>-->
 <!--						<goals>-->
 <!--							<goal>generate</goal>-->
 <!--						</goals>-->
