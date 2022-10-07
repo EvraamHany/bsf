@@ -1,4 +1,4 @@
-package bsf.digital.bsffinance;
+package bsf.digital.bsffinance.controller;
 
 import bsf.digital.bsffinance.exceptions.AccountNotExist;
 import bsf.digital.bsffinance.exceptions.NotValidTransaction;

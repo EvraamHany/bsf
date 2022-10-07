@@ -1,5 +1,6 @@
 package bsf.digital.bsffinance.service;
 
+import bsf.digital.bsffinance.exceptions.AccountNotExist;
 import bsf.digital.bsffinance.model.Account;
 import bsf.digital.bsffinance.repository.AccountRepo;
 import org.springframework.stereotype.Service;
@@ -12,7 +13,11 @@ public class AccountService {
         this.accountRepo = accountRepo;
     }
 
-    public Account getAccountByAccountNumber(String accountNumber){
-        return accountRepo.findAccountByAccountNumber(accountNumber);
+    public Account getAccountByAccountNumber(String accountNumber) throws AccountNotExist {
+        Account account = accountRepo.findAccountByAccountNumber(accountNumber);
+        if(account==null){
+            throw new AccountNotExist(String.format("%S %S %S", "Account",accountNumber,"is not Exist"));
+        }else
+        return account;
     }
 }
