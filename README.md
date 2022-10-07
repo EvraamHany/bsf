@@ -30,6 +30,18 @@ A service to handle bank accounts and bank transaction between accounts
 ### you can find the docker file here
     https://github.com/EvraamHany/bsf/blob/main/Dockerfile
     
+# DataBase 
+## DataBase file
+    https://github.com/EvraamHany/bsf/blob/main/src/main/resources/data.sql
+    
+    will be automatically apply to h2 database when application starts
+## Database Console 
+    http://localhost:8080/h2-console
+    
+    url: jdbc:h2:mem:bsf
+    userName: as
+    password: password
+    
 
     
     
