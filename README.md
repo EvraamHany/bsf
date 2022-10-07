@@ -15,6 +15,10 @@ it is all about bank accounts with details and how to manage money transfer betw
 
     https://github.com/EvraamHany/bsf/blob/main/Dockerfile
     
+ ### Run Docker file
+    mvn clean backage
+    then run dokerFile
+    
 
 # API Requests
 all endpoints examples as below
