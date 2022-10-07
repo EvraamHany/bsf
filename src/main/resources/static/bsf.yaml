@@ -13,11 +13,11 @@ servers:
           - 'http'
         default: 'http'
       server:
-        default: 'bsf'
+        default: 'localhost'
       port:
         enum:
-          - '80'
-        default: '80'
+          - '8080'
+        default: '8080'
       basePath:
         default: 'api'
   - url: '{protocol}://{server}:{port}'
@@ -29,12 +29,12 @@ servers:
           - 'https'
         default: 'http'
       server:
-        default: 'bsf'
+        default: 'localhost'
       port:
         enum:
           - '80'
           - '443'
-        default: '80'
+        default: '8080'
 
 paths:
   '/transfer':

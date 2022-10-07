@@ -28,11 +28,18 @@ public class TransferService {
     public TransferResponseEntity applyTransfer(Transfer transfer) throws AccountNotExist, NotValidTransaction {
         Account creditAccount = accountService.checkIfAccountExist(transfer.getCreditAccount());
         Account debitAccount = accountService.checkIfAccountExist(transfer.getDebitAccount());
+        isTheSameAccount(creditAccount,debitAccount);
         hasValidBalance(creditAccount, transfer.getAmount());
         accountService.updateDebitAccount(transfer, debitAccount);
         accountService.updateCreditAccount(transfer, creditAccount);
         transferRepo.save(transfer);
         return new TransferResponseEntity().creditAccount(creditAccount).debitAccount(debitAccount).amount(transfer.getAmount());
+    }
+
+    private void isTheSameAccount(Account creditAccount, Account debitAccount) throws NotValidTransaction {
+        if (creditAccount.equals(debitAccount)){
+            throw new NotValidTransaction("credit and debit account are the same one");
+        }
     }
 
 
