@@ -53,6 +53,6 @@ workflows:
     jobs:
       - save_hello_world_output
       - build-and-test
-      - get_hello_world_output
+      - get_hello_world_output:
           requires:
             - save_hello_world_output
