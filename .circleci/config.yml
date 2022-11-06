@@ -31,11 +31,15 @@ jobs:
           name: Test
           command: mvn test
   save_hello_world_output:
+    docker:
+      - image: circleci/node:13.8.0
     steps:
       -run:
         name: sharing_files
         command: echo "text to output here" > output.txt
   get_hello_world_output:
+    docker:
+      - image: circleci/node:13.8.0
     steps:
       -run:
         name: get_sharing_files
@@ -50,3 +54,5 @@ workflows:
       - save_hello_world_output
       - build-and-test
       - get_hello_world_output
+          requires:
+            - save_hello_world_output
