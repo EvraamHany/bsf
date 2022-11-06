@@ -20,6 +20,10 @@ jobs:
       - checkout
       # Use mvn clean and package as the standard maven build phase
       - run:
+          name: "echo an env var that is part of our project"
+          command: |
+            echo $MY_ENV_VAR
+      - run:
           name: Build
           command: mvn -B -DskipTests clean package
       # Then run your tests!
